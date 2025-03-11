@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter @Setter
 @Entity
 @Table(name = "persona")
-public class Persona {
+public class Client {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -52,11 +52,11 @@ public class Persona {
     private String correo;
     //private String mascotaDueño;
 
-    public Persona() {
+    public Client() {
 
     }
 
-    public Persona(Long id, String nombre, String apellido, String correo, String mascotaDueño) {
+    public Client(Long id, String nombre, String apellido, String correo, String mascotaDueño) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
