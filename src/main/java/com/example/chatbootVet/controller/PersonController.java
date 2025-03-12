@@ -20,13 +20,14 @@ public class PersonController {
         return personService.savePerson(person);
     }
 
+
     // 🔹 Obtener todos los usuarios
     @GetMapping("/obtener")
     public List<Person> getAllPerson() {
         return personService.getAllPerson();
     }
 
-    @DeleteMapping("/borrar")
+    @DeleteMapping("/borrar/{id}")
     public String deltePerson(@RequestParam Long id){
         personService.deletePerson(id);
         return "Usuario eliminado";
