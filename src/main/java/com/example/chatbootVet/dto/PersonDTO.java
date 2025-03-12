@@ -1,4 +1,4 @@
 package com.example.chatbootVet.dto;
 
-public class ClientDTO {
+public class PersonDTO {
 }

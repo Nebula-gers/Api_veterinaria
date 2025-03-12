@@ -1,4 +1,4 @@
 package com.example.chatbootVet.service;
 
-public interface IClientService {
+public interface IPersonService {
 }

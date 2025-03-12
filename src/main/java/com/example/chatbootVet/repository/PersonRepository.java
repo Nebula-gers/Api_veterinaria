@@ -1,10 +1,10 @@
 package com.example.chatbootVet.repository;
 
 
-import com.example.chatbootVet.model.Client;
+import com.example.chatbootVet.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ClientRepository extends JpaRepository<Client, Long> {
+public interface PersonRepository extends JpaRepository<Person, Long> {
 }
