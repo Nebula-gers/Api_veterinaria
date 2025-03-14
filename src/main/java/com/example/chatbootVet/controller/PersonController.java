@@ -2,42 +2,42 @@ package com.example.chatbootVet.controller;
 
 import com.example.chatbootVet.model.Person;
 import com.example.chatbootVet.service.PersonService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.validation.Valid;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/personas")
 public class PersonController {
 
-    @Autowired
-    private PersonService personService;
+    private final PersonService personService;
 
-    @PostMapping("/crear")
-    public Person createPerson(@RequestBody Person person) {
-        return personService.savePerson(person);
+    
+    public PersonController(PersonService personService) {
+        this.personService = personService;
     }
 
+    @PostMapping("/crear")
+    public ResponseEntity<Person> createPerson(@Valid @RequestBody Person person) {
+        return ResponseEntity.ok(personService.savePerson(person));
+    }
 
-    // 🔹 Obtener todos los usuarios
     @GetMapping("/obtener")
-    public List<Person> getAllPerson() {
-        return personService.getAllPerson();
+    public ResponseEntity<List<Person>> getAllPersons() {
+        return ResponseEntity.ok(personService.getAllPerson());
     }
 
     @DeleteMapping("/borrar/{id}")
-    public String deltePerson(@RequestParam Long id){
+    public ResponseEntity<String> deletePerson(@PathVariable Long id) {
         personService.deletePerson(id);
-        return "Usuario eliminado";
-    }
-    @GetMapping("/buscar?{id}")
-    public Optional<Person> findPersonbyId(@PathVariable Long id){
-        return personService.getPersonById(id);
+        return ResponseEntity.ok("Usuario eliminado correctamente");
     }
 
-
-
-
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<Person> findPersonById(@PathVariable Long id) {
+        return ResponseEntity.ok(personService.getPersonById(id));
+    }
 }

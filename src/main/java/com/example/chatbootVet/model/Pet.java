@@ -17,6 +17,10 @@ public class Pet {
     private String raza;
     private String color;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "person_id")
+    private Person person;
+
     public Pet() {
     }
 
@@ -58,5 +62,13 @@ public class Pet {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }
